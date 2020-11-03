@@ -41,26 +41,6 @@ var add_product = (req, res) => {
             console.log(err);
         }
     });
-
-
-    // var product = new Product(req.body);
-
-    // product.save()
-    // .then(function(item){
-    //     res.send("data saved");
-    // })
-    // .catch(function(err){
-    //     res.status(400).send('unable to save to database');
-    // })
-    // product.pro_id = 1;
-    // product.name = "PC";
-    // product.brand = "Lenovo";
-    // product.description = "Light-wieght";
-    // product.price = 1000;
-    // product.stock = 45;
-    // product.discount = 200;
-    // product.attribute = "Full Screen";
-    // product.createdAt = Date.now;
 }
 
 var sales = (req, res) => {
@@ -79,6 +59,10 @@ var supplier = (req, res) => {
 }
 var aboutUs = (req, res) => {
     res.render('employee/about')
+}
+
+var ourProducts = (req,res)=>{
+    res.render('employee/products')
 }
 
 var productStocks = (req, res) => {
@@ -233,6 +217,7 @@ module.exports = {
     stocks,
     supplier,
     aboutUs,
+    ourProducts,
     productStocks,
     separateMonitor,
     separateSystemUnit,

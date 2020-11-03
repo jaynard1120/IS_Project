@@ -26,8 +26,33 @@ var insertRecord = (req,res) =>{
 
     employee.save((err,doc)=>{
         if(!err){
-            // res.send("Patay na gyud");
-            // res.redirect('employee/stockManagement');
+            if(req.body.position == "Manager"){
+                myName = doc.fullname;
+                myPosition = doc.position;
+                res.render('employee/dashboards',{
+                    name: doc.fullname,
+                    userPosition: doc.position
+                })
+                // res.send("Manager Ko ha!");
+            }else if(req.body.position == "Sales Person"){
+                myName = doc.fullname;
+                myPosition = doc.position;
+                res.render('employee/dashboards',{
+                    name: doc.fullname,
+                    userPosition: doc.position
+                })
+                // res.render('employee/dashboard')
+                // res.send("Sales Person Ko!")
+            }else{
+                myName = doc.fullname;
+                myPosition = doc.position;
+                res.render('employee/dashboards',{
+                    name: doc.fullname,
+                    userPosition: doc.position
+                })
+                // res.render('employee/stocksPage');
+                // res.send("Stock Person ko!")
+            }
         }
         else{
             console.log(err)
@@ -43,24 +68,6 @@ var insertRecord = (req,res) =>{
         }
     })
 };
-
-//Update data from Database
-var updateRecord = (req,res) => {
-    console.log(req.body.id);
-    Employee.findByIdAndUpdate(req.body.id, req.body, {new: true},(err,doc)=>{
-        if(!err){res.redirect("employee/list")}
-        else{
-            if(err.name == 'ValidationError'){
-                handleValidationError(err,req.body);
-                res.render("employee/userForm",{
-                    // viewTitle: "Update Employee",
-                    employee: req.body
-                });
-            }else
-                console.log('Error during record update! '+err)
-        }
-    })
-}
 
 var myName = 'Dear User';
 var myPosition = ''
@@ -131,6 +138,10 @@ var about = (req,res)=>{
     res.render('employee/about')
 }
 
+var help = (req,res)=>{
+    res.render('employee/help')
+}
+
 var handleValidationError = (err,body) =>{
     for (field in err.errors){
         switch (err.errors[field].path){
@@ -157,19 +168,13 @@ var updatePage = (req,res)=>{
     })
 }
 
-// var deleteData = (req,res)=>{
-//     mployee.findByIdAndRemove(req.params.id,(err,doc) => {
-//         if(!err){res.redirect('/employee/list')}
-//         else{console.log('Error during delete! '+ err);}
-//     })
-// }
 
 module.exports = {
     pass,
     insert_Edit,
     login,
     updatePage,
-    // deleteData,
+    help,
     dashboard,
     myName,
     about

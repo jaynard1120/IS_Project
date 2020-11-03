@@ -1,4 +1,5 @@
 var express = require('express');
+const employeeControllers = require('../controllers/employeeControllers');
 var router = express.Router();
 var userControllers = require('../controllers/employeeControllers');
 var productsControllers = require('../controllers/productControllers');
@@ -86,5 +87,8 @@ router.get('/employee/product/stockManagement',productsControllers.stocks)
 
 router.get('/employee/product/supplier',productsControllers.supplier)
 
+router.get('/employee/products',productsControllers.ourProducts)
+
+router.get('/employee/help',employeeControllers.help)
 //Export router
 module.exports = router;

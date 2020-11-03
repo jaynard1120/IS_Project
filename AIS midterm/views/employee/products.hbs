@@ -1,0 +1,216 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+    integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+<!-- FONT ICONS -->
+<!-- <link rel="stylesheet" href="path/to/font-awesome/css/font-awesome.min.css"> -->
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+<link rel="icon" href="/public/images/logo.png" type="image/png" sizes="16x16">
+<link rel="stylesheet" href="/public/css/user.css">
+<!-- FONT-FAMILY -->
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300&display=swap" rel="stylesheet">
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+
+<body>
+    
+<!-- Sidebar -->
+    <nav class="sidenav">
+        <ul class="nav flex-column pmd-sidebar-nav">
+            <div class="mb-5">
+                <a class="navbar-brand text-white ml-3" href="#">
+                    <div class="text-center ml-n4"><strong><span
+                                style="font-size:5vw; color:black">PC</span>Tech</strong></div>
+                    <div class="text-center ml-5"><strong>Express</strong></div>
+
+                </a>
+            </div>
+            <li class="nav-item stocks">
+                <a class="nav-link" href="/employee/dashboard">
+                    <span class="media-body"><i class="fa fa-columns mr-4"></i>Dashboard</span>
+                </a>
+            </li>
+
+            <li class="nav-item stocks">
+                <a class="nav-link" href="/employee/aboutUs">
+                    <span class="media-body"><i class="fa fa-address-card"></i>&nbsp;&nbsp;&nbsp;About Us</span>
+
+                </a>
+            </li>
+
+            <li class="nav-item sales">
+                <a class="nav-link" href="/employee/products">
+                    <span class="media-body"><i class="fa fa-product-hunt"></i>&nbsp;&nbsp;&nbsp;Products</span>
+                </a>
+            </li>
+            <li class="nav-item supplier">
+                <a class="nav-link" href="/employee/help">
+                    <span class="media-body"><i class="fa fa-question-circle"></i>&nbsp;&nbsp;&nbsp;Help</span>
+                </a>
+            </li>
+        </ul>
+    </nav>
+    <div class="col-sm-2" style="float: right;margin-right:-9%">
+        <!-- <img class="mr-3 fa fa-user"alt="avatar"> -->
+        <div class="media-body" id="admin" style="cursor: pointer;">
+            <div class="pl-3">
+                <i class="fa fa-user" style="font-size: 3vw;"></i>
+            </div>
+            <div class="admin">
+                Admin
+                <i class="fa fa-caret-down"></i>
+            </div>
+        </div>
+        <div class="dropdown-content text-center" id="signOut" style="font-size: 1.2vw;float:left;">
+            <a href="http://localhost:3000/employee">Sign out</a>
+        </div>
+    </div>
+
+    <br><br>
+    <hr>
+<div class="main" style="margin-left:30%">
+<div class="container" style="margin-left:135px; margin-top:2in;">
+  <div class="row">
+    <div class="col">
+        <img src="images/predatorOrion.png" alt="Predator Orion" height="300px" width="300px">
+    </div>
+    <div class="col">
+      <h3>Acer Predator Orion 9000 <br>Black Gaming Desktop</h3>
+      <p>Brand : Acer<br>
+        Item : System Unit<br>
+        Item Description : Windows 10, <br>Intel Core i9, 3.30 GHz, 32 GB <br>
+        Availability : In Stock<br>
+        Unit Price : 119,517</p>
+    </div>
+ </div> 
+ 
+ </div>
+
+ <hr>
+
+ <div class="container" style="margin-left:135px; margin-top:2in;">
+  <div class="row">
+    <div class="col">
+        <img src="images/abmdLED-LCD.png" alt="ABMD LED-LCD" height="300px" width="300px">
+    </div>
+    <div class="col">
+      <h3>Acer V226HQL Abmd <br>LED-LCD Monitor</h3>
+      <p>Brand : Acer<br>
+        Item : Monitor<br>
+        Item Description : 22" Widescreen, FHD 1080px,<br> Dimensions: 15.02"H x 20.19"W x 8.06"D <br>
+        Availability : In Stock<br>
+        Unit Price : 6,338</p>
+    </div>
+ </div> 
+ </div>
+
+ <hr>
+
+ <div class="container" style="margin-left:135px; margin-top:2in;">
+  <div class="row">
+    <div class="col">
+        <img src="images/gamingG5.png" alt="Inspiron G5" height="300px" width="300px">
+    </div>
+    <div class="col">
+      <h3>Dell G5 15<br>Gaming Laptop</h3>
+      <p>Brand : Acer<br>
+        Item : Laptop<br>
+        Item Description : Windows 10 Home, Intel Core i7<br>4.5 GHz, 6GB GDDR6<br>
+        Availability : In Stock<br>
+        Unit Price : 67,694</p>
+    </div>
+ </div> 
+ </div>
+
+ <hr>
+
+ <div class="container" style="margin-left:135px; margin-top:2in;">
+  <div class="row">
+    <div class="col">
+        <img src="images/xps15.png" alt="XPS 15" height="300px" width="300px">
+    </div>
+    <div class="col">
+      <h3>Dell XPS 15 <br>Laptop</h3>
+      <p>Brand : Acer<br>
+        Item : Laptop<br>
+        Item Description : 15.6", Windows 10 Home 64bit<br>4 GB GDDR6, Intel Core i7
+        Availability : In Stock<br>
+        Unit Price : 55,597</p>
+    </div>
+ </div> 
+ </div>
+
+ <hr>
+
+ <div class="container" style="margin-left:135px; margin-top:2in;">
+  <div class="row">
+    <div class="col">
+        <img src="images/tufCurved.png" alt="Tuf Curved" height="300px" width="300px">
+    </div>
+    <div class="col">
+      <h3>Asus Tuf Curved <br>Monitor   </h3>
+      <p>Brand : Acer<br>
+        Item : Monitor<br>
+        Item Description : 23.6" Full HD, 144Hz,<br> curved display, design for professional
+        Availability: In Stock<br>
+        Unit Price : 30,590</p>
+    </div>
+ </div> 
+ </div>
+
+ <hr>
+
+ </div>
+ 
+ 
+ 
+
+
+    
+
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+  <script>
+
+
+
+    //Tabs
+    function openName(evt, tabName) {
+
+      var i, content, tabs;
+      content = document.getElementsByClassName("content");
+      for (i = 0; i < content.length; i++) {
+        content[i].style.display = "none";
+      }
+      tabs = document.getElementsByClassName("tabs");
+      for (i = 0; i < tabs.length; i++) {
+        tabs[i].className = tabs[i].className.replace(" active", "");
+      }
+      document.getElementById(tabName).style.display = "block";
+      evt.currentTarget.className += " active";
+    }
+    document.getElementById("defaultOpen").click();
+  </script>
+
+<script>
+    $(document).ready(function () {
+            $(".dropdown-content").hide();
+            $("#admin").click(function () {
+                $(".dropdown-content").toggle();
+            })
+        })
+</script>
+
+  <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN"
+    crossorigin="anonymous"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q"
+    crossorigin="anonymous"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl"
+    crossorigin="anonymous"></script>
+
+</body>
+</html>
