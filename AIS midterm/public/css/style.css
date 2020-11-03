@@ -1,0 +1,76 @@
+/*Footer*/
+
+img.rounded-corners {
+    border-radius: 10px;
+}
+
+
+/*Tab na syah...*/
+
+.tab {
+    overflow: hidden;
+    border: 1px solid #ccc;
+    background-color: #D3D3D3;
+}
+
+.tab button {
+    background-color: inherit;
+    float: left;
+    border: none;
+    cursor: pointer;
+    padding: 14px 16px;
+    transition: 0.3s;
+    font-size: 17px;
+}
+
+.tab button:hover {
+    background-color: #778899;
+}
+
+.tab button.active {
+    background-color: #778899;
+}
+
+.content {
+    display: none;
+    padding: 6px 12px;
+    border-top: none;
+}
+
+
+/*Text divider*/
+
+.divider-text {
+    position: relative;
+    text-align: center;
+    margin-top: 15px;
+    margin-bottom: 15px;
+}
+
+.divider-text span {
+    padding: 7px;
+    font-size: 15px;
+    position: relative;
+    z-index: 2;
+}
+
+.divider-text:after {
+    content: "";
+    position: absolute;
+    width: 100%;
+    border-bottom: 1px solid #ddd;
+    top: 55%;
+    left: 0;
+    z-index: 1;
+}
+
+.btn-facebook {
+    background-color: #405D9D;
+    color: #fff;
+}
+
+.btn-twitter {
+    background-color: #42AEEC;
+    color: #fff;
+}
+

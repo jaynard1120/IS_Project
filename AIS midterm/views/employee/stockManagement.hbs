@@ -1,0 +1,567 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+        integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <!-- FONT ICONS -->
+    <!-- <link rel="stylesheet" href="path/to/font-awesome/css/font-awesome.min.css"> -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="icon" href="/public/images/logo.png" type="image/png" sizes="16x16">
+    <!-- FONT-FAMILY -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300&display=swap" rel="stylesheet">
+    <title>PCTech Express Inventory System</title>
+    <style>
+        .sidenav {
+            height: 100%;
+            width: 250px;
+            position: fixed;
+            z-index: 1;
+            top: 0;
+            left: 0;
+            background-color: darksalmon;
+            overflow-x: hidden;
+            padding-top: 20px;
+            margin-right: 20%;
+        }
+
+        .navbar-brand {
+            font-size: 250%;
+        }
+
+        .nav-item a span {
+            padding: 6px 8px 14px;
+            text-decoration: none;
+            font-size: 25px;
+            color: #f8f7f7;
+            display: block;
+        }
+
+        .nav-item a:hover {
+            background-color: rgba(10, 10, 10, 0.623);
+        }
+
+        .bg-primary {
+            margin-left: 18%;
+        }
+
+        /*tabs*/
+        /* Style the tab */
+        .tab {
+            width: fit-content;
+            overflow: hidden;
+            border: 1px solid #ccc;
+            background-color: #f1f1f1;
+            margin-left: 15%;
+        }
+
+        /* Style the buttons inside the tab */
+        .tab button {
+            background-color: inherit;
+            float: left;
+            border: none;
+            outline: none;
+            cursor: pointer;
+            padding: 14px 16px;
+            transition: 0.3s;
+            font-size: 17px;
+        }
+
+        /* Change background color of buttons on hover */
+        .tab button:hover {
+            background-color: #ddd;
+        }
+
+        /* Create an active/current tablink class */
+        .tab button.active {
+            background-color: #ccc;
+        }
+
+        /* Style the tab content */
+        .tabcontent {
+            display: none;
+            padding: 6px 12px;
+            border: 1px solid #ccc;
+            border-top: none;
+        }
+
+        .card {
+            background: rgba(0, 0, 0, 0.05);
+            color: #fff;
+            font: 18px Arial, sans-serif;
+            box-shadow: 4px 4px 4px #97989c;
+            width: 400px;
+            height: 200px;
+        }
+
+        .main {
+            margin-left: 10%;
+        }
+
+        a {
+            color: #787880;
+        }
+
+        a:hover {
+            color: #070708;
+            text-decoration: none;
+        }
+
+        .card:hover {
+            background-color: #e9e9f7;
+            box-shadow: 6px 6px 6px #97989c;
+        }
+
+        #signOut {
+            background-color: #d3d6db;
+            box-shadow: 2px 2px 2px #97989c;
+            width: 70px;
+        }
+
+        #signOut:hover {
+            background-color: #e1e7f0;
+            box-shadow: 4px 4px 4px #97989c;
+        }
+
+        #admin {
+            margin-top: -40%;
+        }
+
+        li,
+        ul {
+            list-style: none;
+        }
+
+        .responsive-table .table-row {
+            background-color: #ffffff;
+            box-shadow: 0px 0px 9px 0px rgba(0, 0, 0, 0.1);
+        }
+
+        .responsive-table .table-row {
+            border-radius: 6px;
+            font-size: 19px;
+            background-color: #ffffff;
+            box-shadow: 0px 0px 9px 0px rgba(1, 0, 0.5, 1);
+        }
+
+        .responsive-table li {
+            border-radius: 4px;
+            padding: 25px 30px;
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 25px;
+        }
+
+        .container {
+            max-width: 1000px;
+            max-height: 100px;
+            margin-left: auto;
+            margin-right: auto;
+            padding-left: 10px;
+            padding-right: 10px;
+        }
+
+        ul {
+            display: block;
+            list-style-type: disc;
+            margin-block-start: 1em;
+            margin-block-end: 1em;
+            margin-inline-start: 0px;
+            margin-inline-end: 0px;
+            padding-inline-start: 40px;
+        }
+
+        .responsive-table .table-header {
+            background-color: #95A5A6;
+            font-size: 14px;
+            text-transform: uppercase;
+            letter-spacing: 0.03em;
+        }
+
+        .responsive-table .col-1 {
+            flex-basis: 10%;
+        }
+    </style>
+</head>
+
+<body style="background-color: #ffff;">
+    <!-- Sidebar -->
+    <nav class="sidenav">
+        <ul class="nav flex-column pmd-sidebar-nav">
+            <div class="mb-5">
+                <a class="navbar-brand text-white ml-3" href="#">
+                    <div class="text-center ml-n4"><strong><span
+                                style="font-size:5vw; color:black">PC</span>Tech</strong></div>
+                    <div class="text-center ml-5"><strong>Express</strong></div>
+
+                </a>
+            </div>
+            <li class="nav-item stocks">
+                <a class="nav-link" href="/employee/dashboard">
+                    <span class="media-body"><i class="fa fa-columns mr-4"></i>Dashboard</span>
+                </a>
+            </li>
+
+            <li class="nav-item stocks">
+                <a class="nav-link" href="/employee/aboutUs">
+                    <span class="media-body"><i class="fa fa-address-card"></i>&nbsp;&nbsp;&nbsp;About Us</span>
+
+                </a>
+            </li>
+
+            <li class="nav-item sales">
+                <a class="nav-link" href="products.php">
+                    <span class="media-body"><i class="fa fa-product-hunt"></i>&nbsp;&nbsp;&nbsp;Products</span>
+                </a>
+            </li>
+            <li class="nav-item supplier">
+                <a class="nav-link" href="help.php">
+                    <span class="media-body"><i class="fa fa-question-circle"></i>&nbsp;&nbsp;&nbsp;Help</span>
+                </a>
+            </li>
+        </ul>
+    </nav>
+    <div class="col-sm-2" style="float: right;margin-right:-9%">
+        <!-- <img class="mr-3 fa fa-user"alt="avatar"> -->
+        <div class="media-body" id="admin" style="cursor: pointer;">
+            <div class="pl-3">
+                <i class="fa fa-user" style="font-size: 3vw;"></i>
+            </div>
+            <div class="admin">
+                Admin
+                <i class="fa fa-caret-down"></i>
+            </div>
+        </div>
+        <div class="dropdown-content text-center" id="signOut" style="font-size: 1.2vw;float:left;">
+            <a href="http://localhost:3000/employee">Sign out</a>
+        </div>
+    </div>
+
+
+    <!--Stocks Tabs-->
+    <div class="main">
+        <div class="tab" style="margin-top:1in;">
+            <button class="tabs" onclick="openName(event, 'tab1')" id="defaultOpen">Stock In</button>
+            <button class="tabs" onclick="openName(event, 'tab2')">Stock Out</button>
+            <button class="tabs" onclick="openName(event, 'tab3')">Available Stocks</button>
+        </div>
+
+        <div style="margin-left: 15%;">
+            <form action="/employee/product/add" method="POST" autocomplete="on">
+                <label for="">
+                    Product ID
+                    <input type="text" name="_id">
+                </label>
+                <label for="">
+                    Product Name
+                    <input type="text" name="name">
+                </label>
+                <label for="">
+                    Product Brand
+                    <input type="text" name="brand">
+                </label>
+                <label for="">
+                    Product Description
+                    <input type="text" name="description">
+                </label>
+                <label for="">
+                    Model
+                    <input type="text" name="model">
+                </label>
+                <label for="">
+                    Product price
+                    <input type="text" name="price">
+                </label>
+                <label for="">
+                    14inch
+                    <input type="text" name="stock1">
+                </label>
+                <label for="">
+                    21inch
+                    <input type="text" name="stock2">
+                </label>
+                <label for="">
+                    24inch
+                    <input type="text" name="stock3">
+                </label>
+                <label for="">
+                    27inch
+                    <input type="text" name="stock4">
+                </label>
+                <label for="">
+                    50inch
+                    <input type="text" name="stock5">
+                </label>
+                <label for="">
+                    78inch
+                    <input type="text" name="stock6">
+                </label>
+                <label for="">
+                    80inch
+                    <input type="text" name="stock7">
+                </label>
+                <label for="">
+                    Product discount
+                    <input type="text" name="discount">
+                </label>
+                {{!-- <label for="">
+                Product Attribute
+                <select name="attributes" id="attr" multiple>
+                    <option value="14 inch">14 inch</option>
+                    <option value="21 inch">21 inch</option>
+                    <option value="24 inch">24 inch</option>
+                    <option value="27 inch">27 inch</option>
+                    <option value="50 inch">50 inch</option>
+                </select> --}}
+                <input type="hidden" name="attribute">
+                </label>
+                {{!-- <label for="">
+                Product Date
+                <input type="text">
+            </label> --}}
+                <input type="submit" value="Submit">
+            </form>
+        </div>
+
+        <div class="container">
+
+            <ul class="responsive-table">
+
+                <li class="table-header table-row">
+                    <div class="col col-1">Qnty.</div>
+                    <div class="col col-1">Item</div>
+                    <div class="col col-1">Supplier</div>
+                    <div class="col col-1">Unit Price</div>
+                    <div class="col col-1">Total Price</div>
+                    <div class="col col-1">Action</div>
+                </li>
+                <li class="table-row">
+                    <div class="col col-1" data-label="id"></div>
+                    <div class="col col-1" data-label="firstname"></div>
+                    <div class="col col-1" data-label=" lastname"></div>
+                    <div class="col col-1" data-label="email"></div>
+                    <div class="col col-1" data-label="actions">
+                        <form action="" method="post">
+                            <input type="hidden" name="data" value="">
+                            <input type="hidden" name="lastname" value="">
+                            <input type="hidden" name="firstname" value="">
+                            <input type="hidden" name="email" value="">
+                            <input type="hidden" name="pass" value="">
+                            {{!-- <input type="submit" name="delete" class="delete" value="  Delete  ">
+            <input type="submit" class="update" name="update" value="  Update  ">               --}}
+                            <a href=""><i class="fa fa-pencil"></i></a>
+                            <a href=""><i class="fa fa-eye"></i></a>
+
+                        </form>
+                    </div>
+                </li>
+            </ul>
+        </div>
+
+
+        <div id="tab1" class="content">
+            <table id="stockTable" border="1"
+                style="width: 70%; border: 1px solid black; margin-left: 30px; margin-top:1in; margin-left:2in;">
+
+                <tr>
+                    <th>Qnty.</th>
+                    <th>Item</th>
+                    <th>Supplier</th>
+                    <th>Model</th>
+                    <th>Item Description</th>
+                    <th>Unit Price</th>
+                    <th>Total Price</th>
+                    <th></th>
+                    <th></th>
+                </tr>
+                <tr>
+
+                    <th>5 pcs.</th>
+                    <th>System Unit</th>
+                    <th>Acer</th>
+                    <th>Predator Orion</th>
+                    <th></th>
+                    <th></th>
+                    <th></th>
+                    <th></th>
+                </tr>
+                <tr>
+
+                    <th>8 pcs.</th>
+                    <th>Monitor</th>
+                    <th>Asus</th>
+                    <th>Tuf Curved Gaming</th>
+                    <th></th>
+                    <th></th>
+                    <th></th>
+                    <th></th>
+                </tr>
+                <tr>
+
+
+                    <th>5 pcs.</th>
+                    <th>System Unit</th>
+                    <th>Dell</th>
+                    <th>Gaming Inspiron G5</th>
+                    <th></th>
+                    <th></th>
+                    <th></th>
+                    <th></th>
+                </tr>
+                <tr>
+
+
+                    <th>8 pcs.</th>
+                    <th>Monitor</th>
+                    <th>HP</th>
+                    <th>Razer Monitor</th>
+                    <th></th>
+                    <th></th>
+                    <th></th>
+                    <th></th>
+                </tr>
+                <tr>
+
+
+                    <th>10 pcs.</th>
+                    <th>Laptop</th>
+                    <th>Lenovo</th>
+                    <th>Ideapad Laptop</th>
+                    <th></th>
+                    <th></th>
+                    <th></th>
+                    <th></th>
+                </tr>
+            </table>
+        </div>
+
+        <div id="tab2" class="content">
+            <table id="stockTable" border="1"
+                style="width: 70%; border: 1px solid black; margin-left: 30px; margin-top:2in;">
+                <tr>
+                    <th>Qnty.</th>
+                    <th>Item</th>
+                    <th>Supplier</th>
+                    <th>Model</th>
+                    <th>Item Description</th>
+                    <th>Unit Price</th>
+                    <th>Total Price</th>
+                    <th></th>
+                    <th></th>
+                </tr>
+                <tr>
+
+                    <th>5 pcs.</th>
+                    <th>System Unit</th>
+                    <th>Hp</th>
+                    <th>Pavilion</th>
+                    <th></th>
+                    <th></th>
+                    <th></th>
+                    <th></th>
+                </tr>
+                <tr>
+
+                    <th>8 pcs.</th>
+                    <th>Monitor</th>
+                    <th>Asus</th>
+                    <th>Tuf Curved Gaming</th>
+                    <th></th>
+                    <th></th>
+                    <th></th>
+                    <th></th>
+                </tr>
+                <tr>
+
+
+                    <th>5 pcs.</th>
+                    <th>laptop</th>
+                    <th>Dell</th>
+                    <th>Xps 15</th>
+                    <th></th>
+                    <th></th>
+                    <th></th>
+                    <th></th>
+                </tr>
+                <tr>
+
+
+                    <th>8 pcs.</th>
+                    <th>Monitor</th>
+                    <th>Acer</th>
+                    <th>AMBD LED-LCD</th>
+                    <th></th>
+                    <th></th>
+                    <th></th>
+                    <th></th>
+                </tr>
+                <tr>
+
+
+                    <th>10 pcs.</th>
+                    <th>Laptop</th>
+                    <th>Lenovo</th>
+                    <th>Ideapad Laptop</th>
+                    <th></th>
+                    <th></th>
+                    <th></th>
+                    <th></th>
+                </tr>
+            </table>
+        </div>
+
+        <div id="tab3" class="content" style="margin-top:1in; margin-left:2in;">
+            sdfjlhgjhdf;lgjh';gkhyjghkjk
+        </div>
+    </div>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+    <script>
+
+        //Tabs
+        function openName(evt, tabName) {
+
+            var i, content, tabs;
+            content = document.getElementsByClassName("content");
+            for (i = 0; i < content.length; i++) {
+                content[i].style.display = "none";
+            }
+            tabs = document.getElementsByClassName("tabs");
+            for (i = 0; i < tabs.length; i++) {
+                tabs[i].className = tabs[i].className.replace(" active", "");
+            }
+            document.getElementById(tabName).style.display = "block";
+            evt.currentTarget.className += " active";
+        }
+        document.getElementById("defaultOpen").click();
+
+    </script>
+    <script>
+        $(document).ready(function () {
+            $(".dropdown-content").hide();
+
+            $("#admin").click(function () {
+                $(".dropdown-content").toggle();
+            })
+            // var w = window.innerWidth;
+            // console.log(w);
+        });
+    </script>
+
+    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"
+        integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN"
+        crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"
+        integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q"
+        crossorigin="anonymous"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"
+        integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl"
+        crossorigin="anonymous"></script>
+</body>
+
+</html>

@@ -1,0 +1,190 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Stocks</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+        integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <!-- FONT ICONS -->
+    <!-- <link rel="stylesheet" href="path/to/font-awesome/css/font-awesome.min.css"> -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="icon" href="/public/images/logo.png" type="image/png" sizes="16x16">
+    <link rel="stylesheet" href="/public/css/user.css">
+    <!-- FONT-FAMILY -->
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300&display=swap" rel="stylesheet">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+</head>
+<style>
+    .container {
+        margin-left: 20%;
+    }
+</style>
+
+<body>
+
+    <nav class="sidenav">
+        <ul class="nav flex-column pmd-sidebar-nav">
+            <div class="mb-5">
+                <a class="navbar-brand text-white ml-3" href="#">
+                    <div class="text-center ml-n4"><strong><span
+                                style="font-size:5vw; color:black">PC</span>Tech</strong></div>
+                    <div class="text-center ml-5"><strong>Express</strong></div>
+
+                </a>
+            </div>
+            <li class="nav-item stocks">
+                <a class="nav-link" href="/employee/dashboard">
+                    <span class="media-body"><i class="fa fa-columns mr-4"></i>Dashboard</span>
+                </a>
+            </li>
+
+            <li class="nav-item stocks">
+                <a class="nav-link" href="/employee/aboutUs">
+                    <span class="media-body"><i class="fa fa-address-card"></i>&nbsp;&nbsp;&nbsp;About Us</span>
+
+                </a>
+            </li>
+
+            <li class="nav-item sales">
+                <a class="nav-link" href="products.php">
+                    <span class="media-body"><i class="fa fa-product-hunt"></i>&nbsp;&nbsp;&nbsp;Products</span>
+                </a>
+            </li>
+            <li class="nav-item supplier">
+                <a class="nav-link" href="help.php">
+                    <span class="media-body"><i class="fa fa-question-circle"></i>&nbsp;&nbsp;&nbsp;Help</span>
+                </a>
+            </li>
+        </ul>
+    </nav>
+    <div class="col-sm-2" style="float: right;margin-right:-9%">
+        <!-- <img class="mr-3 fa fa-user"alt="avatar"> -->
+        <div class="media-body" id="admin" style="cursor: pointer;">
+            <div class="pl-3">
+                <i class="fa fa-user" style="font-size: 3vw;"></i>
+            </div>
+            <div class="admin">
+                Admin
+                <i class="fa fa-caret-down"></i>
+            </div>
+        </div>
+        <div class="dropdown-content text-center" id="signOut" style="font-size: 1.2vw;float:left;">
+            <a href="http://localhost:3000/employee">Sign out</a>
+        </div>
+    </div>
+    <br><br>
+    <hr>
+    <div class="container">
+        <div class="form-group">
+            <div class="form-group col-md-4" style="float:left">
+                <label>Name</label>
+                <h5 class="form-control">{{product.name}}</h5>
+            </div>
+            <div class="form-group col-md-4" style="float:left">
+                <label>Brand</label>
+                <h5 class="form-control">{{product.brand}}</h5>
+            </div>
+            <div class="form-group col-md-4" style="float:left">
+                <label>Model</label>
+                <h5 class="form-control">{{product.model}}</h5>
+            </div>
+        </div>
+        <div class="form-group">
+            <div class="form-group col-md-4" style="float:left">
+                <label>Stock</label>
+                <h5 class="form-control">{{product.stock}}</h5>
+            </div>
+            <div class="form-group col-md-4" style="float:left">
+                <label>Price</label>
+                <h5 class="form-control">₱ {{product.price}}</h5>
+            </div>
+            <div class="form-group col-md-4" style="float:left">
+                <label>Discount</label>
+                <h5 class="form-control">{{product.discount}}</h5>
+            </div>
+        </div>
+        <div class="form-group" style="height:200px;width: 100%;float:left">
+            <label>Description</label>
+            <hp class="form-control">{{product.description}}</p>
+        </div>
+
+
+        <input type="hidden" name="update" id="stock" value="{{update}}">
+        <table>
+            <tr>
+                <td>
+                    <div id="stockEdit" style="margin-top:-10%;float:left;width:fit-content">
+                        <form action="/employee/updated/stockOut" id="form" method="post" autocomplete="off">
+                            <input type="hidden" name="_id" value={{product._id}}>
+                            <div class="form-group">
+                                <div class="form-group col-md-5" style="float:left">
+                                    <label>Add Stock</label>
+                                    <input class="form-control" name="add_stock" type="number" value=0>
+                                </div>
+
+                                <div class="form-group col-md-5 " style="float:left;margin-top:4%">
+
+                                    <button class="form-control btn-info" id="save" type="button">Update</button>
+                                </div>
+                            </div>
+                        </form>
+
+                    </div>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <center>
+                        <div class="form-group" style="float: left">
+                            <a href="/employee/product/Stock_Out" class="btn btn-warning"><i
+                                    class="fa fa-arrow-left"></i>
+                                Back</a>
+                        </div>
+                    </center>
+                </td>
+            </tr>
+        </table>
+
+    </div>
+
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@10"></script>
+    <script>
+        $(document).ready(function () {
+            $(".dropdown-content").hide();
+            $("#admin").click(function () {
+                $(".dropdown-content").toggle();
+            })
+
+            if ($('#stock').val() != "edit") {
+                $('#stockEdit').hide();
+            } else {
+                $('#stockEdit').show();
+            }
+
+            $('#save').on('click', (e) => {
+                Swal.fire({
+                    title: 'Do you want to save the changes?',
+                    showDenyButton: true,
+                    denyButtonText: `No!`,
+                    confirmButtonText: `Yes!`
+                }).then((success) => {
+                    if (success.isConfirmed) {
+                        swal.fire('Saved!', '', 'success')
+                            .then((success) => {
+                                $('#form').submit();
+                            })
+
+                    } else {
+                        swal.fire('Changes not saved', '', 'info')
+                    }
+                })
+            })
+        })
+    </script>
+</body>
+
+</html>

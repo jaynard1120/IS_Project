@@ -1,0 +1,215 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Stock Management</title>
+</head>
+<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+    integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+<!-- FONT ICONS -->
+<!-- <link rel="stylesheet" href="path/to/font-awesome/css/font-awesome.min.css"> -->
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+<link rel="icon" href="/public/images/logo.png" type="image/png" sizes="16x16">
+<link rel="stylesheet" href="/public/css/user.css">
+<!-- FONT-FAMILY -->
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300&display=swap" rel="stylesheet">
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+<style>
+    .main {
+        margin-left: 12%;
+    }
+</style>
+
+<body>
+    <!-- Sidebar -->
+    <nav class="sidenav">
+        <ul class="nav flex-column pmd-sidebar-nav">
+            <div class="mb-5">
+                <a class="navbar-brand text-white ml-3" href="#">
+                    <div class="text-center ml-n4"><strong><span
+                                style="font-size:5vw; color:black">PC</span>Tech</strong></div>
+                    <div class="text-center ml-5"><strong>Express</strong></div>
+
+                </a>
+            </div>
+            <li class="nav-item stocks">
+                <a class="nav-link" href="/employee/dashboard">
+                    <span class="media-body"><i class="fa fa-columns mr-4"></i>Dashboard</span>
+                </a>
+            </li>
+
+            <li class="nav-item stocks">
+                <a class="nav-link" href="/employee/aboutUs">
+                    <span class="media-body"><i class="fa fa-address-card"></i>&nbsp;&nbsp;&nbsp;About Us</span>
+
+                </a>
+            </li>
+
+            <li class="nav-item sales">
+                <a class="nav-link" href="products.php">
+                    <span class="media-body"><i class="fa fa-product-hunt"></i>&nbsp;&nbsp;&nbsp;Products</span>
+                </a>
+            </li>
+            <li class="nav-item supplier">
+                <a class="nav-link" href="help.php">
+                    <span class="media-body"><i class="fa fa-question-circle"></i>&nbsp;&nbsp;&nbsp;Help</span>
+                </a>
+            </li>
+        </ul>
+    </nav>
+
+    <div class="col-sm-2" style="float: right;margin-right:-9%">
+        <!-- <img class="mr-3 fa fa-user"alt="avatar"> -->
+        <div class="media-body" id="admin" style="cursor: pointer;">
+            <div class="pl-3">
+                <i class="fa fa-user" style="font-size: 3vw;"></i>
+            </div>
+            <div class="admin">
+                Admin
+                <i class="fa fa-caret-down"></i>
+            </div>
+        </div>
+        <div class="dropdown-content text-center" id="signOut" style="font-size: 1.2vw;float:left;">
+            <a href="http://localhost:3000/employee">Sign out</a>
+        </div>
+    </div>
+<h2 style="float: left;margin-left:20%">Stocks Out</h2>
+    <br><br>
+    <hr>
+
+    {{!-- tabs --}}
+    <div class="tab" style="margin-left:20%;">
+        <form action="/employee/product/stockManagement" method="post"><button class="tabdefault" id="defaultOpen">Stock
+                In</button></form>
+
+        <form action="/employee/product/Stock_Out" method="post"><button class="tabOne" id="tabOne" type="submit">Stock
+                Out</button></form>
+
+        <button class="tabTwo" id="tabTwo">Available Stocks</button>
+    </div><br>
+
+    {{!-- Stock in Content --}}
+
+    <div id="tab1" class="content">
+        <div class="main">
+
+            <table style="margin-left:10%;">
+                <tr>
+                    <td>
+                        <form action="/employee/product/stock_Out" method="post">
+                            <button type="submit" name="all" class="btn btn-warning" id="allPro">All</button>
+                            <input type="hidden" name="all" value="all">
+                        </form>
+                    </td>
+                    <td>
+                        <form action="/employee/product/stock_Out/monitor" method="post">
+                            <button type="submit" name="monitor" class="btn btn-warning" id="monitor">Monitor</button>
+                            <input type="hidden" name="monitor" value="Monitor">
+                        </form>
+                    </td>
+                    <td>
+                        <form action="/employee/product/stock_Out/System-Unit" method="post">
+                            <button type="submit" name="systemUnit" class="btn btn-warning" id="system">System
+                                Unit</button>
+                            <input type="hidden" name="systemUnit" value="System Unit">
+                        </form>
+                    </td>
+                    <td>
+                        <form action="/employee/product/stock_Out/Keyboard-and-Mouse" method="post">
+                            <button type="submit" name="KandM" class="btn btn-warning" id="kandm">Keyboard And
+                                Mouse</button>
+                            <input type="hidden" name="KandM" value="Keyboard And Mouse">
+                        </form>
+                    </td>
+                    <td>
+                        <form action="/employee/product/stock_Out/Laptop" method="post">
+                            <button type="submit" name="laptop" class="btn btn-warning" id="laptop">Laptop</button>
+                            <input type="hidden" name="laptop" value="Laptop">
+                        </form>
+                    </td>
+                </tr>
+            </table>
+
+            <form action="" method="post">
+                <div class="container">
+
+                    <ul class="responsive-table">
+
+                        <li class="table-header table-row">
+                            <div class="col col-3">Name</div>
+                            <div class="col col-2">Brand</div>
+                            <div class="col col-3">Model</div>
+                            <div class="col col-2">Price</div>
+                            <div class="col col-2">Stock</div>
+                            <div class="col col-3">Action</div>
+                        </li>
+                        <div id="allList">
+                            {{#each stock_list }}
+                            <li class="table-row">
+                                <div class="col col-3" id="name" data-label="name">{{this.name}}</div>
+                                <div class="col col-2" data-label="brand">{{this.brand}}</div>
+                                <div class="col col-3" data-label="model">{{this.model}}</div>
+                                <div class="col col-2" data-label="price">₱ {{this.price}}</div>
+                                <div class="col col-2" data-label="stock">{{this.stock}}</div>
+                                <div class="col col-3" data-label="actions">
+                                    <a href="/employee/product/stock_Out/{{this._id}}/update"
+                                        class="btn btn-info btn-lg" id="editStock"><i class="fa fa-pencil"></i></a>
+                                    <a href="/employee/product/stock_Out/{{this._id}}/view"
+                                        class="btn btn-info btn-lg" id="viewStock"><i class="fa fa-eye"></i></a>
+                                </div>
+                            </li>
+                            {{/each}}
+                        </div>
+                    </ul>
+            </form>
+        </div>
+    </div>
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@10"></script>
+    <script>
+        $(document).ready(function () {
+            $('.tabOne').addClass("active")
+            $(".dropdown-content").hide();
+            $("#admin").click(function () {
+                $(".dropdown-content").toggle();
+            })
+
+            $('#editStock').click(function () {
+                $('#memory').hide();
+                $("#edit").show();
+                $('#UpdateStock').show();
+                $('#viewOneStock').hide();
+                $('#viewPrice').hide();
+                $('#save').show()
+            })
+            $('#viewStock').click(function () {
+                $('#memory').show();
+                $('#viewOneStock').show();
+                $('#UpdateStock').hide();
+                $("#edit").hide();
+                $('#viewPrice').show();
+                $('#save').hide()
+            })
+            $('#save').on('click', (e) => {
+                swal.fire({
+                    title: 'Do you want to save the changes?',
+                    showDenyButton: true,
+                    denyButtonText: `No!`,
+                    confirmButtonText: `Yes!`
+                }).then((success) => {
+                    if (success.isConfirmed) {
+                        swal.fire('Saved!', '', 'success')
+                        $('#form').submit();
+                    } else {
+                        swal.fire('Changes not saved', '', 'info')
+                    }
+                })
+            })
+        })
+    </script>
+</body>
+
+</html>

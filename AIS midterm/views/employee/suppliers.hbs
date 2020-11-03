@@ -1,0 +1,173 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Suppliers</title>
+    <!-- FONT ICONS -->
+    <!-- <link rel="stylesheet" href="path/to/font-awesome/css/font-awesome.min.css"> -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+        integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <!-- FONT ICONS -->
+    <!-- <link rel="stylesheet" href="path/to/font-awesome/css/font-awesome.min.css"> -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="icon" href="/public/images/logo.png" type="image/png" sizes="16x16">
+    <link rel="stylesheet" href="/public/css/user.css">
+    <!-- FONT-FAMILY -->
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300&display=swap" rel="stylesheet">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+</head>
+<style>
+    
+</style>
+
+<body>
+
+    <!-- Sidebar -->
+    <nav class="sidenav">
+        <ul class="nav flex-column pmd-sidebar-nav">
+            <div class="mb-5">
+                <a class="navbar-brand text-white ml-3" href="#">
+                    <div class="text-center ml-n4"><strong><span
+                                style="font-size:5vw; color:black">PC</span>Tech</strong></div>
+                    <div class="text-center ml-5"><strong>Express</strong></div>
+
+                </a>
+            </div>
+            <li class="nav-item stocks">
+                <a class="nav-link" href="/employee/dashboard">
+                    <span class="media-body"><i class="fa fa-columns mr-4"></i>Dashboard</span>
+                </a>
+            </li>
+
+            <li class="nav-item stocks">
+                <a class="nav-link" href="/employee/aboutUs">
+                    <span class="media-body"><i class="fa fa-address-card"></i>&nbsp;&nbsp;&nbsp;About Us</span>
+
+                </a>
+            </li>
+
+            <li class="nav-item sales">
+                <a class="nav-link" href="products.php">
+                    <span class="media-body"><i class="fa fa-product-hunt"></i>&nbsp;&nbsp;&nbsp;Products</span>
+                </a>
+            </li>
+            <li class="nav-item supplier">
+                <a class="nav-link" href="help.php">
+                    <span class="media-body"><i class="fa fa-question-circle"></i>&nbsp;&nbsp;&nbsp;Help</span>
+                </a>
+            </li>
+        </ul>
+    </nav>
+    <div class="col-sm-2" style="float: right;margin-right:-9%">
+        <!-- <img class="mr-3 fa fa-user"alt="avatar"> -->
+        <div class="media-body" id="admin" style="cursor: pointer;">
+            <div class="pl-3">
+                <i class="fa fa-user" style="font-size: 3vw;"></i>
+            </div>
+            <div class="admin">
+                Admin
+                <i class="fa fa-caret-down"></i>
+            </div>
+        </div>
+        <div class="dropdown-content text-center" id="signOut" style="font-size: 1.2vw;float:left;">
+            <a href="http://localhost:3000/employee">Sign out</a>
+        </div>
+    </div>
+    <br><br><hr>
+    <center>
+    <h1 style="margin-top: 4%;">Welcome&nbsp;{{name}}</h1>
+    </center>
+    <!--Supplier1-->
+    <div class="container" style="margin-left:3in; margin-top:1in;">
+        
+        <div class="row">
+            <div class="col-sm-5">
+                <img src="images/lenovo-building.png" class="img-thumbnail" alt="Lenovo"><br>
+
+            </div>
+            <div class="col-sm-5">
+                <p>Business Type: Computer Hardware Electronics Industry</p>
+                <p>Location: Cebu City, Cebu</p>
+                <p>Main Products: Desktop, SuperComputers, Laptop </p><br>
+
+            </div>
+
+        </div>
+    </div>
+
+    <!--Supplier2-->
+    <div class="container" style="margin-left:3in; margin-top:1in;">
+        <div class="row">
+            <div class="col-sm-5">
+                <img src="images/hp-building.png" class="img-thumbnail" alt="HP"><br>
+
+            </div>
+            <div class="col-sm-5">
+                <p>Business Type: Computer Hardware Computer Software IT Services IT Consulting Industry</p>
+                <p>Location: Mandaue City, Cebu</p>
+                <p>Main Products: Desktop, SuperComputers, Laptop </p><br>
+
+            </div>
+
+        </div>
+    </div>
+
+    <!--Supplier3-->
+    <div class="container" style="margin-left:3in; margin-top:1in;">
+        <div class="row">
+            <div class="col-sm-5">
+                <img src="images/Dell-building.png" class="img-thumbnail" alt="Dell"><br>
+
+            </div>
+            <div class="col-sm-5">
+                <p>Business Type: Multinational Computer Technology Manufacturer</p>
+                <p>Location: Cebu City, Cebu (SM City Cebu)</p>
+                <p>Main Products: Personal Computers, Servers, Pheriperals </p><br>
+
+            </div>
+        </div>
+    </div>
+
+    <!--Supplier4-->
+    <div class="container" style="margin-left:3in; margin-top:1in;">
+        <div class="row">
+            <div class="col-sm-5">
+                <img src="images/asus-building.png" class="img-thumbnail" alt="Asus"><br>
+            </div>
+            <div class="col-sm-5">
+                <p>Business Type: Computer Hardware Electronics Industry</p>
+                <p>Location: Cebu City, Cebu (Ayala Malls Central Bloc)</p>
+                <p>Main Products: Desktop, Tablets Computer, Tablet Computers </p><br>
+
+            </div>
+        </div>
+    </div>
+
+    <!--Supplier5-->
+    <div class="container" style="margin-left:3in; margin-top:1in;">
+        <div class="row">
+            <div class="col-sm-5">
+                <img src="images/acer-building.png" class="img-thumbnail" alt="Acer"><br>
+            </div>
+            <div class="col-sm-5">
+                <p>Business Type: Computer Hardware Electronics Industry</p>
+                <p>Location: Cebu City, Cebu (XCebu IT Park)</p>
+                <p>Main Products: Desktop, Laptop, Netbooks </p><br>
+
+            </div>
+        </div>
+    </div>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+    <script>
+        $(document).ready(function () {
+            $(".dropdown-content").hide();
+            $("#admin").click(function () {
+                $(".dropdown-content").toggle();
+            })
+        })
+    </script>
+</body>
+
+</html>

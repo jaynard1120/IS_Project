@@ -1,0 +1,324 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+        integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <!-- FONT ICONS -->
+    <!-- <link rel="stylesheet" href="path/to/font-awesome/css/font-awesome.min.css"> -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="icon" href="/public/images/logo.png" type="image/png" sizes="16x16">
+    <link rel="stylesheet" href="/public/css/user.css">
+    <!-- FONT-FAMILY -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300&display=swap" rel="stylesheet">
+    <title>PCTech Express Inventory System</title>
+</head>
+<style>
+    a {
+    color: #787880;
+}
+
+a:hover {
+    color: #070708;
+    text-decoration: none;
+}
+
+</style>
+<body style="background-color: #ffff;">
+    <!-- Sidebar -->
+    <nav class="sidenav">
+        <ul class="nav flex-column pmd-sidebar-nav">
+            <div class="mb-5">
+                <a class="navbar-brand text-white ml-3" href="#">
+                    <div class="text-center ml-n4"><strong><span
+                                style="font-size:5vw; color:black">PC</span>Tech</strong></div>
+                    <div class="text-center ml-5"><strong>Express</strong></div>
+
+                </a>
+            </div>
+            <li class="nav-item stocks">
+                <a class="nav-link" href="/employee/dashboard">
+                    <span class="media-body"><i class="fa fa-columns mr-4"></i>Dashboard</span>
+                </a>
+            </li>
+
+            <li class="nav-item stocks">
+                <a class="nav-link" href="/employee/aboutus">
+                    <span class="media-body"><i class="fa fa-address-card"></i>&nbsp;&nbsp;&nbsp;About Us</span>
+
+                </a>
+            </li>
+
+            <li class="nav-item sales">
+                <a class="nav-link" href="products.php">
+                    <span class="media-body"><i class="fa fa-product-hunt"></i>&nbsp;&nbsp;&nbsp;Products</span>
+                </a>
+            </li>
+            <li class="nav-item supplier">
+                <a class="nav-link" href="help.php">
+                    <span class="media-body"><i class="fa fa-question-circle"></i>&nbsp;&nbsp;&nbsp;Help</span>
+                </a>
+            </li>
+            {{!-- <li class="nav-item dashboard">
+                <a class="nav-link" href="/employee/dashboard">
+                    <span class="media-body"><i class="fa fa-columns mr-4"></i>Dashboard</span>
+                </a>
+            </li>
+
+            <li class="nav-item stocks">
+                <a class="nav-link active" href="stockManagement.php">
+                    <span class="media-body"><i class="fa fa-exchange mr-4"></i>Stocks</span>
+                </a>
+            </li>
+
+            <li class="nav-item sales">
+                <a class="nav-link" href="salesReport.php">
+                    <span class="media-body"><i class="fa fa-bar-chart mr-4"></i>Sales</span>
+                </a>
+            </li>
+            <li class="nav-item supplier">
+                <a class="nav-link" href="supplier.php">
+                    <span class="media-body"><i class="fa fa-users mr-4"></i>Supplier</span>
+                </a>
+            </li>
+            <li class="nav-item transactions">
+                <a class="nav-link" href="transactions.php">
+                    <span class="media-body"><i class="fa fa-exchange mr-4"></i>Transactions</span>
+                </a>
+            </li> --}}
+        </ul>
+    </nav>
+    <div class="col-sm-2" style="float: right;margin-right:-9%">
+        <!-- <img class="mr-3 fa fa-user"alt="avatar"> -->
+        <div class="media-body" id="admin" style="cursor: pointer;">
+            <div class="pl-3">
+                <i class="fa fa-user" style="font-size: 3vw;"></i>
+            </div>
+            <div class="admin">
+                Admin
+                <i class="fa fa-caret-down"></i>
+            </div>
+        </div>
+        <div class="dropdown-content text-center" id="signOut" style="font-size: 1.2vw;float:left;">
+            <a href="/employee">Sign out</a>
+        </div>
+    </div>
+    <br><br><hr>
+    <center>
+        <h1 style="margin-top: 4%;">Welcome&nbsp;{{name}}</h1>
+        <input type="hidden" id="userPosition" value="{{userPosition}}">
+        <div class="card-deck" style="margin-left:20%;margin-top: 4%;float:left;">
+            <div class="card" style="height:200px;" id="stocks" style="width: 300px;">
+                <div class="card-body text-center">
+                    <a href="/employee/product/stockManagement">
+                        <h1 class="card-text" style="padding-top: 15%;">Stock Management</h1>
+                    </a>
+                </div>
+            </div>
+            <div class="card" id="sales">
+                <div class="card-body text-center">
+                    <a href="/employee/product/salesReport">
+                        <h1 class="card-text" style="padding-top: 15%;">Sales Report</h1>
+                    </a>
+                </div>
+            </div>
+        </div>
+        <div class="card-deck" style="margin-left:20%;margin-top: 2%;float:left;">
+            <div class="card" style="height:200px;">
+                <div class="card-body text-center">
+                    <a href="/employee/product/supplier">
+                        <h1 class="card-text" style="padding-top: 15%;">Suppliers</h1>
+                    </a>
+                </div>
+            </div>
+            {{!-- <div class="card">
+                <div class="card-body text-center">
+                    <p class="card-text">Some text inside the fourth card</p>
+                </div>
+            </div>
+        </div> --}}
+        </div>
+
+        {{!-- <div>
+
+        <!--In/Out Tabs-->
+       
+ <div class="tab" style="margin-left:3in;">
+  <button class="tablinks" onclick="openCity(event, 'stocksIn')">Stocks In</button>
+  <button class="tablinks" onclick="openCity(event, 'stocksOut')">Stocks Out</button>
+  <button class="tablinks" onclick="openCity(event, 'gallery')">Gallery</button>
+</div>
+
+<div id="stocksIn" class="tabcontent">
+  <h3>Stock In</h3>
+  <!--Stock In Table-->
+  <div class = "table" style="margin-left:3in; margin-top:1in;">
+        <table id = "stockTable" border="1" style="width: 70%; border: 1px solid black; margin-left: 30px;">
+                        <tr>
+                            <th>Image</th>
+                            <th>Qnty.</th>
+                            <th>Model</th>
+                            <th>Item Description</th>
+     
+                            <th>Total Prize</th>
+                        </tr>
+                        <tr>
+               <th> <img src="images/predatorOrion.png" class="img-thumbnail" alt="Acer Predator Orion" width="100px" height="100px"></th>            
+                            
+                            <th>Qnty.</th>
+                            <th>Predator Orion</th>
+                            <th>Item Description</th>
+                            <th>Total Prize</th>
+                        </tr>
+                        <tr>
+               <th> <img src="images/tufCurved.png" class="img-thumbnail" alt="Asus Tuf Curved Gaming" width="100px" height="100px"></th>            
+                           
+                            <th>Unit</th>
+                            <th>Item Description</th>
+                            <th>Unit Prize</th>
+                            <th>Total Prize</th>
+                        </tr>
+                        <tr>
+               <th> <img src="images/inspironG5.png" class="img-thumbnail" alt="Dell Gaming Inpiron G5" width="100px" height="100px"></th>            
+
+                            <th>Qnty.</th>
+                            <th>Unit</th>
+                            <th>Item Description</th>
+                            <th>Total Prize</th>
+                        </tr>
+                        <tr>
+               <th> <img src="images/razer.png" class="img-thumbnail" alt="HP Razer Monitor" width="100px" height="100px"></th>            
+
+                            <th>Qnty.</th>
+                            <th>Unit</th>
+                            <th>Item Description</th>
+                            <th>Total Prize</th>
+                        </tr>
+                        <tr>
+               <th> <img src="images/ideaPad.png" class="img-thumbnail" alt="Lenovo Ideapad Laptop" width="100px" height="100px"></th>            
+
+                            <th>Qnty.</th>
+                            <th>Unit</th>
+                            <th>Item Description</th>
+                            <th>Total Prize</th>
+                        </tr>
+                    </table>
+    </div>
+
+</div>
+
+<div id="stocksOut" class="tabcontent">
+  <h3>Stocks Out</h3>
+  <!--Stock Out Table-->
+  <div class = "table" style="margin-left:3in; margin-top:1in;">
+        <table id = "stockTable" border="1" style="width: 70%; border: 1px solid black; margin-left: 30px;">
+                        <tr>
+                            <th>Image</th>
+                            <th>Qnty.</th>
+                            <th>Model</th>
+                            <th>Item Description</th>
+     
+                            <th>Total Prize</th>
+                        </tr>
+                        <tr>
+               <th> <img src="images/xps15.png" class="img-thumbnail" alt="Dell XPS 15 Laptop" width="100px" height="100px"></th>            
+                            
+                            <th>Qnty.</th>
+                            <th>Predator Orion</th>
+                            <th>Item Description</th>
+                            <th>Total Prize</th>
+                        </tr>
+                        <tr>
+               <th> <img src="images/abmdLED-LCD.png" class="img-thumbnail" alt="Acer ABMD LED-LCD Monitor" width="100px" height="100px"></th>            
+                           
+                            <th>Unit</th>
+                            <th>Item Description</th>
+                            <th>Unit Prize</th>
+                            <th>Total Prize</th>
+                        </tr>
+                        <tr>
+               <th> <img src="images/pavilion.png" class="img-thumbnail" alt="HP Pavilion System Unit" width="100px" height="100px"></th>            
+
+                            <th>Qnty.</th>
+                            <th>Unit</th>
+                            <th>Item Description</th>
+                            <th>Total Prize</th>
+                        </tr>
+                        <tr>
+               <th> <img src="images/razer.png" class="img-thumbnail" alt="HP Razer Monitor" width="100px" height="100px"></th>            
+
+                            <th>Qnty.</th>
+                            <th>Unit</th>
+                            <th>Item Description</th>
+                            <th>Total Prize</th>
+                        </tr>
+                        <tr>
+               <th> <img src="images/ideaPad.png" class="img-thumbnail" alt="Lenovo Ideapad Laptop" width="100px" height="100px"></th>            
+
+                            <th>Qnty.</th>
+                            <th>Unit</th>
+                            <th>Item Description</th>
+                            <th>Total Prize</th>
+                        </tr>
+                    </table>
+    </div>
+ 
+</div>
+
+<div id="gallery" class="tabcontent">
+  <h3>Gallery</h3>
+  <p>Tokyo is the capital of Japan.</p>
+</div> --}}
+
+
+
+
+
+        <!--Tabs-->
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+        <script>
+            $(document).ready(function () {
+
+                if ($('#userPosition').val() == "Sales Person") {
+                    $('#stocks').hide();
+                    $('#sales').show();
+                }
+                if ($('#userPosition').val() == "Stock Person") {
+                    $('#sales').hide();
+                    $('#stocks').show();
+                }
+                $(".dropdown-content").hide();
+
+                $("#admin").click(function () {
+                    $(".dropdown-content").toggle();
+                })
+                // var w = window.innerWidth;
+                // console.log(w);
+            });
+        </script>
+        <script>
+            function openCity(evt, cityName) {
+                var i, tabcontent, tablinks;
+                tabcontent = document.getElementsByClassName("tabcontent");
+                for (i = 0; i < tabcontent.length; i++) {
+                    tabcontent[i].style.display = "none";
+                }
+                tablinks = document.getElementsByClassName("tablinks");
+                for (i = 0; i < tablinks.length; i++) {
+                    tablinks[i].className = tablinks[i].className.replace(" active", "");
+                }
+                document.getElementById(cityName).style.display = "block";
+                evt.currentTarget.className += " active";
+            }
+        </script>
+
+
+</body>
+
+</html>

@@ -1,0 +1,368 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
+        integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+    <link rel="icon" href="../../public/images/logo.png" type="image/png" sizes="16x16">
+    <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.0.8/css/all.css">
+    <link rel="stylesheet" href="/public/css/style.css">
+
+    <title>PCTEch Express Inventory System</title>
+</head>
+
+<body>
+
+
+    <!--Jumbotron-->
+    <div class="jumbotron" style="background-color: darksalmon;">
+        <h1 class="display-4">PCTech Express Inventory System</h1>
+        <p class="lead">A personal Management and Information System of PCTech Express start-up Company</p>
+        <hr class="my-4">
+        <p>Computer Hardware and Components available here!</p>
+        <p class="lead">
+            <button type="button" class="btn btn-dark btn-lg" data-toggle="modal" data-target="#exampleModal">
+                Sign in
+            </button>
+        </p>
+    </div>
+
+    <img src="../../public/images/pctech.png" alt="PCTech Express Logo" height="mx-auto" width="100%" p="50px">
+    <p class="divider-text">
+        <span class="bg-light" font-size="50px">Manages Information System</span>
+    </p>
+    <center>
+        <h3>Hi!, were PCTech Express.</h3>
+        <h4>Provides efffecient and effective Inventory</h4>
+        <p>This inventory system features the stock management, transactions, and sales forcast.</p>
+    </center>
+    <br>
+    <br>
+    <br>
+
+    <!-- Modal -->
+    <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+        aria-hidden="true">
+        <div class="modal-dialog " role="document">
+            <div class="modal-content ">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="exampleModalLabel">CHOOSE POSITION: </h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+
+                <!--User's Buttons-->
+                <center>
+                    <button type="button" id="manager" class="btn btn-secondary btn-lg" data-toggle="collapse"
+                        href="#collapseRegistrationForm" style="width:50%;margin-top:2%;margin-bottom:2%;"
+                        value="MANAGER"><i class="fas fa-user"></i><br>MANAGER</button>
+                    <button type="button" id="salesPerson" class="btn btn-secondary btn-lg" data-toggle="collapse"
+                        href="#collapseRegistrationForm" style="width:50%;margin-top:2%;margin-bottom:2%;"
+                        value="SALES PERSON"> <i class="far fa-user-circle  "></i><br>SALES PERSON </button>
+                    <button type="button" id="stockPerson" class="btn btn-secondary btn-lg" data-toggle="collapse"
+                        href="#collapseRegistrationForm" style="width:50%;margin-top:2%;margin-bottom:2%;"
+                        value="STOCK PERSON"><i class="far fa-user-circle  "></i><br>STOCK PERSON</button>
+                </center>
+                <!-- Login/Create Account Form -->
+                <div class="collapse" id="collapseRegistrationForm">
+                    <div class="card rounded shadow shadow-sm">
+                        <div class="card-header">
+                            <div class="tab">
+                                <button class="tabs" style="width: 50%;" onclick="openName(event, 'tab1')"
+                                    id="defaultOpen">Sign in</button>
+                                <button class="tabs" style="width:50%;" onclick="openName(event, 'tab2')">Create
+                                    Account</button>
+                            </div>
+                        </div>
+                        <!--Tab1 Login-->
+                        <form action="employee/dashboard" method="POST" autocomplete="off" <div id="tab1"
+                            class="content">
+                            <h4 class="card-title" style="float: left;">Sign in as &nbsp;</h4>
+                            <h4 class="loginAs" style="float: left;"></h4>
+                            <input type="hidden" id="name" name="name" value="{{name}}">
+                            <input type="hidden" name="positionlogin" id="positionlogin">
+                            <div class="form-group input-group">
+                                <div class="input-group-prepend">
+                                    <span class="input-group-text"> <i class="fa fa-envelope"></i> </span>
+                                </div>
+                                <input name="email" class="form-control"  placeholder="Email address" type="email" required>
+                            </div>
+
+                            <div class="form-group input-group">
+                                <div class="input-group-prepend">
+                                    <span class="input-group-text"> <i class="fa fa-lock"></i> </span>
+                                </div>
+                                <input class="form-control" name="password" placeholder="Password" type="password">
+                                <span>{{loginerror}}</span>
+                            </div>
+
+                            <div class="form-group">
+                                <p>Forgot Password?</p>
+                                <button type="submit" id="logIn" class="btn btn-dark btn-block">Log in</button>
+                            </div>
+                        </form>
+                        </article>
+                    </div>
+                    <!--Tab2 Create Account-->
+                    <div id="tab2" class="content">
+
+                        <article class="card-body mx-auto" style="max-width: 400px;">
+
+                            <h4 class="card-title" style="float: left;">Create Account as &nbsp;</h4>
+                            <h4 class="loginAs" style="float: left;"></h4>
+                            {{!-- Create Account to database --}}
+                            <form action="/employee" id="form" method="POST" autocomplete="off">
+                                {{!-- <input type="hidden" name="id" value="{{employee._id}}"> --}}
+                                <input type="hidden" name="position" id="position">
+                                <div class="form-group input-group">
+                                    <div class="input-group-prepend">
+                                        <span class="input-group-text"> <i class="fa fa-user"></i> </span>
+                                    </div>
+                                    {{!-- Full name --}}
+                                    <input name="fullname" class="form-control" placeholder="Full name" type="text"
+                                        required>
+                                </div>
+
+                                <div class="form-group input-group">
+                                    <div class="input-group-prepend">
+                                        <span class="input-group-text"> <i class="fa fa-phone"></i> </span>
+                                    </div>
+                                    {{!-- Contact --}}
+                                    <input name="mobile" class="form-control" placeholder="Contact" type="text"
+                                        required>
+                                </div>
+
+                                <div class="form-group">
+                                    <div class="input-group">
+                                        <div class="input-group-prepend">
+                                            <span class="input-group-text"> <i class="fa fa-envelope"></i> </span>
+                                        </div>
+                                        {{!-- Email Address --}}
+                                        <input name="email" class="form-control" id="email" placeholder="Email address"
+                                            type="email" required>
+                                    </div>
+                                    <span class="text-danger" role="alert" id="error"></span>
+
+                                </div>
+
+                                <div class="form-group input-group">
+                                    <div class="input-group">
+                                        <div class="input-group-prepend">
+                                            <span class="input-group-text"> <i class="fa fa-envelope"></i> </span>
+                                        </div>
+                                        {{!-- Confirm Email --}}
+                                        <input name="confirmEmail" id="cEmail" class="form-control"
+                                            placeholder="Confirm Email" type="email" required>
+                                    </div>
+
+                                </div>
+
+                                <div class="form-group input-group">
+
+                                    <div class="input-group-prepend">
+                                        <span class="input-group-text"> <i class="fa fa-lock"></i> </span>
+                                    </div>
+                                    {{!-- Password --}}
+                                    <input name="password" id="password" class="form-control" placeholder="Password"
+                                        type="password" required>
+
+                                </div>
+
+                                <div class="form-group input-group">
+                                    <div class="input-group">
+                                        <div class="input-group-prepend">
+                                            <span class="input-group-text"> <i class="fa fa-lock"></i> </span>
+                                        </div>
+                                        {{!-- Confirm Password --}}
+                                        <input name="confirmPassword" id="cPassword" class="form-control"
+                                            placeholder="Confirm Password" type="password" required>
+                                    </div>
+                                    <span class="text-danger" role="alert" id="idError"></span>
+                                </div>
+                                <button type="submit" id="submit" class="btn btn-dark btn-block"> Create
+                                    Account</button>
+                    </div>
+                    <div class="form-group">
+                    </div>
+                    </form>
+                    </article>
+                </div>
+            </div>
+        </div>
+    </div>
+    </div>
+    </div>
+
+    <!--Footer na sya-->
+
+    <footer class="page-footer font-small blue pt-4" style="background-color: darksalmon; width:100%">
+        <div class="container-fluid text-center text-md-left">
+            <div class="row">
+                <div class="col-md-6 mt-md-0 mt-3">
+                    <h5 class="text-uppercase">Contributors:</h5>
+                    <p>
+                    <p>Mr. Jaynard Senilla
+                        <br>
+                        Ms. Jonalyn Mobillas
+                        <br>
+                        Ms. Jennie Joy Tomalon
+
+                        <br>
+                        Ms. Reina Mates
+
+                </div>
+                <hr class="clearfix w-100 d-md-none pb-3">
+                <div class="col-md-3 mb-md-0 mb-3">
+                    <h5 class="text-uppercase">Location:</h5>
+
+                    Samjung Building, Nasipit Talamban,
+                    <br>
+                    San Alberto, Carmilites Formation Center
+                    <br>
+                    Cebu City
+
+
+
+                </div>
+
+                <div class="col-md-3 mb-md-0 mb-3">
+
+
+                    <h5 class="text-uppercase">Contact Us:</h5>
+                    Email Address: pctech_express@gmail.com
+                    <br>
+                    Facebook: pctech_express@facebook.com
+                    <br>
+                    Call: 0928 782 3633
+                    <br>
+                    0955 178 3435
+
+
+
+                </div>
+
+
+            </div>
+
+            <button><i class="fab fa-linkedin"></i></button>
+            <button><i class="fab fa-facebook-square"></i></button>
+        </div>
+        <div class="footer-copyright text-center py-3">© 2020 Copyright:
+            <a href="https://www.softinventive.com/hardware-inventory/">
+                pctech_express.com</a>
+            <p>All Rights Reserved.</p>
+        </div>
+    </footer>
+
+
+
+
+
+
+   <script src="https://cdn.jsdelivr.net/npm/sweetalert2@10"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+    <script>
+        //Sign in sa Modal
+        $("#btnLogin").click(function (event) {
+
+            var form = $("#formLogin")
+
+            if (form[0].checkValidity() === false) {
+                event.preventDefault()
+                event.stopPropagation()
+            }
+
+            form.addClass('was-validated');
+        })
+        $('#manager').click(function () {
+            $('#position').val('Manager');
+            $('#positionlogin').val('Manager');
+            $('.loginAs').text(' Manager');
+        })
+        $('#salesPerson').click(function () {
+            $('#position').val('Sales Person');
+            $('#positionlogin').val('Sales Person');
+            $('.loginAs').text(' Sales Person');
+        })
+
+        $('#stockPerson').click(function () {
+            $('#position').val('Stock Person');
+            $('#positionlogin').val('Stock Person');
+            $('.loginAs').text(' Stock Person');
+        })
+
+        $('#submit').click(function (event) {
+            if ($('#email').val() == $('#cEmail').val() && $('#password').val() == $('#cPassword').val()) {
+                $('#form').submit();
+            } else if ($('#email').val() != $('#cEmail').val()) {
+                event.preventDefault();
+                $('#error').text("Email is not matched!");
+            } else {
+                event.preventDefault();
+                $('#idError').text("Password is not matched!")
+            }
+        });
+
+        $("#email").on("input", function () {
+            var email = $("#email").val();
+            var filter = /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;;
+            if (!filter.test(email)) {
+                $("#error").text("Invalid Email Address");
+                $("#submit").attr("disabled", true);
+            } else {
+                $("#submit").attr("disabled", false);
+                $("#error").empty();
+            }
+        });
+        console.log($('#name').val());
+        if ($('#name').val() == "Error") {
+            Swal.fire({
+                title: 'Something went wrong...',
+                icon: 'info',
+                confirmButtonText: `Ok`,
+            }).then((result) => {
+                /* Read more about isConfirmed, isDenied below */
+                if (result.isConfirmed) {
+                    window.location.href = "http://localhost:3000/employee";
+                }})
+        }
+
+        //Tabs
+        function openName(evt, tabName) {
+
+            var i, content, tabs;
+            content = document.getElementsByClassName("content");
+            for (i = 0; i < content.length; i++) {
+                content[i].style.display = "none";
+            }
+            tabs = document.getElementsByClassName("tabs");
+            for (i = 0; i < tabs.length; i++) {
+                tabs[i].className = tabs[i].className.replace(" active", "");
+            }
+            document.getElementById(tabName).style.display = "block";
+            evt.currentTarget.className += " active";
+        }
+        document.getElementById("defaultOpen").click();
+    </script>
+
+
+    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"
+        integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN"
+        crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"
+        integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q"
+        crossorigin="anonymous"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"
+        integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl"
+        crossorigin="anonymous"></script>
+
+
+
+</body>
+
+</html>
