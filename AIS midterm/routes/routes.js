@@ -67,6 +67,16 @@ router.post('/employee/updated/stockOut',stockOutControllers.updateStockOut)
 
 router.post('/employee/product/AvailableStocks',productsControllers.available)
 
+router.post('/employee/product/AvailableStocks/monitor',productsControllers.availableMonitor)
+
+router.post('/employee/product/AvailableStocks/System-Unit',productsControllers.availableSystemUnit)
+
+router.post('/employee/product/AvailableStocks/Keyboard-and-Mouse',productsControllers.availablekeyboardAndMouse)
+
+router.post('/employee/product/AvailableStocks/Laptop',productsControllers.availablelaptop)
+
+router.get('/employee/product/AvailableStocks/:id/view',productsControllers.viewAvailable)
+
 
 router.post('/employee/product/add',productsControllers.add_now)
 
