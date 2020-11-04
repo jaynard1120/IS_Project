@@ -11,7 +11,7 @@ var stocklist = (req,res)=>{
     Stock_out.find({},(err,products)=>{
         if(!err){
             // console.log("naa ra")
-            res.render('employee/stockOut',{
+            res.render('pages/stockOut',{
                 stock_list:products
             });
         }else{console.log('Error in retrieving data: '+err)}
@@ -19,35 +19,35 @@ var stocklist = (req,res)=>{
 }
 var separateMonitor = (req,res)=>{
     Stock_out.find({name:"Monitor"},(err,products)=>{
-        if(!err){res.render('employee/stockOut',{stock_list:products})}
+        if(!err){res.render('pages/stockOut',{stock_list:products})}
         else{console.log('Error in retrieving data: '+err)}
     })
 }
 
 var separateSystemUnit = (req,res)=>{
     Stock_out.find({name:"System Unit"},(err,products)=>{
-        if(!err){res.render('employee/stockOut',{stock_list:products})}
+        if(!err){res.render('pages/stockOut',{stock_list:products})}
         else{console.log('Error in retrieving data: '+err)}
     })
 }
 
 var keyboardAndMouse = (req,res)=>{
     Stock_out.find({name:"Keyboard and Mouse"},(err,products)=>{
-        if(!err){res.render('employee/stockOut',{stock_list:products})}
+        if(!err){res.render('pages/stockOut',{stock_list:products})}
         else{console.log('Error in retrieving data: '+err)}
     })
 }
 
 var laptop = (req,res)=>{
     Stock_out.find({name:"Laptop"},(err,products)=>{
-        if(!err){res.render('employee/stockOut',{stock_list:products})}
+        if(!err){res.render('pages/stockOut',{stock_list:products})}
         else{console.log('Error in retrieving data: '+err)}
     })
 }
 
 var viewproduct = (req,res)=>{
     Stock_out.findById(req.params._id,(err,product)=>{
-        res.render('employee/stockEdit',{
+        res.render('pages/stockEdit',{
             product:product
         })
     })
@@ -55,7 +55,7 @@ var viewproduct = (req,res)=>{
 
 var updateproduct = (req,res)=>{
     Stock_out.findById(req.params._id,(err,product)=>{
-        res.render('employee/stockEdit',{
+        res.render('pages/stockEdit',{
             product:product,
             update:"edit"
         })
@@ -72,6 +72,14 @@ var updateStockOut = (req,res) => {
         }
     })
 }
+
+var get_all_sales = (req,res)=>{
+    Stock_out.find({},(err,products)=>{
+        if(!err){
+            res.send(products)
+        }
+    })
+}
 module.exports = {
     stocklist,
     separateMonitor,
@@ -80,5 +88,6 @@ module.exports = {
     laptop,
     viewproduct,
     updateproduct,
-    updateStockOut
+    updateStockOut,
+    get_all_sales
 }

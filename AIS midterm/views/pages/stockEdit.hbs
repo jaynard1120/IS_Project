@@ -119,15 +119,11 @@
                         <form action="/employee/updated/stockOut" id="form" method="post" autocomplete="off">
                             <input type="hidden" name="_id" value={{product._id}}>
                             <div class="form-group">
-                                <div class="form-group col-md-5" style="float:left">
-                                    <label>Add Stock</label>
+                                <div class="form-group" style="float:left">
+                                    <label>Add Stock Out</label>
                                     <input class="form-control" name="add_stock" type="number" value=0>
                                 </div>
 
-                                <div class="form-group col-md-5 " style="float:left;margin-top:4%">
-
-                                    <button class="form-control btn-info" id="save" type="button">Update</button>
-                                </div>
                             </div>
                         </form>
 
@@ -138,9 +134,16 @@
                 <td>
                     <center>
                         <div class="form-group" style="float: left">
-                            <a href="/employee/product/Stock_Out" class="btn btn-warning"><i
+                            <table>
+                                <tr>
+                                    <td><a href="/employee/product/Stock_Out" class="btn btn-warning"><i
                                     class="fa fa-arrow-left"></i>
-                                Back</a>
+                                Back</a></td>
+                                <td><button class="form-control btn-info" id="save" type="button">Update</button></td>
+                                </tr>
+                            </table>
+                            
+                                
                         </div>
                     </center>
                 </td>

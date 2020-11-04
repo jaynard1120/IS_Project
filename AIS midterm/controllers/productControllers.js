@@ -10,100 +10,100 @@ var add_now = (req, res) => {
     add_product(req, res);
 }
 
-var add_product = (req, res) => {
-    var product = new Product();
-    product._id = req.body._id;
-    product.name = req.body.name;
-    product.brand = req.body.brand;
-    product.model = req.body.model;
-    product.description = req.body.description;
-    product.price = req.body.price;
-    // product.stock.fourteen = req.body.stock1;
-    // product.stock.twentyOne = req.body.stock2;
-    // product.stock.twentyFour = req.body.stock3;
-    // product.stock.twentySeven = req.body.stock4;
-    // product.stock.fifthy = req.body.stock5;
-    // product.stock.seventyEight = req.body.stock6;
-    // product.stock.eighty = req.body.stock7;
-    product.discount = req.body.discount;
-    product.brand = req.body.brand;
-    // product.attribute = req.body.attribute;
-    product.createdAt = new Date();
-    console.log(req.body.name);
-    console.log(req.body.brand);
+// var add_product = (req, res) => {
+//     var product = new Product();
+//     product._id = req.body._id;
+//     product.name = req.body.name;
+//     product.brand = req.body.brand;
+//     product.model = req.body.model;
+//     product.description = req.body.description;
+//     product.price = req.body.price;
+//     // product.stock.fourteen = req.body.stock1;
+//     // product.stock.twentyOne = req.body.stock2;
+//     // product.stock.twentyFour = req.body.stock3;
+//     // product.stock.twentySeven = req.body.stock4;
+//     // product.stock.fifthy = req.body.stock5;
+//     // product.stock.seventyEight = req.body.stock6;
+//     // product.stock.eighty = req.body.stock7;
+//     product.discount = req.body.discount;
+//     product.brand = req.body.brand;
+//     // product.attribute = req.body.attribute;
+//     product.createdAt = new Date();
+//     console.log(req.body.name);
+//     console.log(req.body.brand);
 
-    product.save((err, doc) => {
-        if (!err) {
-            console.log("Saved");
-            res.send("Patay na gyud");
-            // res.redirect('employee/stockManagement');
-        } else {
-            console.log(err);
-        }
-    });
-}
+//     product.save((err, doc) => {
+//         if (!err) {
+//             console.log("Saved");
+//             res.send("Patay na gyud");
+//             // res.redirect('employee/stockManagement');
+//         } else {
+//             console.log(err);
+//         }
+//     });
+// }
 
 var sales = (req, res) => {
-    res.render('employee/salesReport', {
+    res.render('pages/salesReport', {
         name: myName
     })
 }
 console.log(myName)
 var stocks = (req, res) => {
-    res.render('employee/stocksPage')
+    res.render('pages/stocksPage')
 }
 var supplier = (req, res) => {
-    res.render('employee/suppliers', {
+    res.render('pages/suppliers', {
         name: userControllers.myName
     })
 }
 var aboutUs = (req, res) => {
-    res.render('employee/about')
+    res.render('pages/about')
 }
 
 var ourProducts = (req,res)=>{
-    res.render('employee/products')
+    res.render('pages/products')
 }
 
 var productStocks = (req, res) => {
     Product.find({}, (err, products) => {
         if (!err) {
-            res.render('employee/stocksPage', { product_list: products });
+            res.render('pages/stocksPage', { product_list: products });
         } else { console.log('Error in retrieving data: ' + err) }
     })
 }
 
 var separateMonitor = (req, res) => {
     Product.find({ name: "Monitor" }, (err, products) => {
-        if (!err) { res.render('employee/stocksPage', { product_list: products }) }
+        if (!err) { res.render('pages/stocksPage', { product_list: products }) }
         else { console.log('Error in retrieving data: ' + err) }
     })
 }
 
 var separateSystemUnit = (req, res) => {
     Product.find({ name: "System Unit" }, (err, products) => {
-        if (!err) { res.render('employee/stocksPage', { product_list: products }) }
+        if (!err) { res.render('pages/stocksPage', { product_list: products }) }
         else { console.log('Error in retrieving data: ' + err) }
     })
 }
 
 var keyboardAndMouse = (req, res) => {
     Product.find({ name: "Keyboard and Mouse" }, (err, products) => {
-        if (!err) { res.render('employee/stocksPage', { product_list: products }) }
+        if (!err) { res.render('pages/stocksPage', { product_list: products }) }
         else { console.log('Error in retrieving data: ' + err) }
     })
 }
 
 var laptop = (req, res) => {
     Product.find({ name: "Laptop" }, (err, products) => {
-        if (!err) { res.render('employee/stocksPage', { product_list: products }) }
+        if (!err) { res.render('pages/stocksPage', { product_list: products }) }
         else { console.log('Error in retrieving data: ' + err) }
     })
 }
 
 var viewproduct = (req, res) => {
     Product.findById(req.params._id, (err, product) => {
-        res.render('employee/editStock', {
+        res.render('pages/editStock', {
             product: product
         })
     })
@@ -111,7 +111,7 @@ var viewproduct = (req, res) => {
 
 var updateproduct = (req, res) => {
     Product.findById(req.params._id, (err, product) => {
-        res.render('employee/editStock', {
+        res.render('pages/editStock', {
             product: product,
             update: "edit"
         })
@@ -163,44 +163,48 @@ var available = async (req, res) => {
            final.push(ele)
         };
    })
-   res.render('employee/availablestock',{
+   res.render('pages/availablestock',{
        available_list:final
    })
 }
 
 var availableMonitor = (req, res) => {
     let monitors = final.filter(stock => stock.name == "Monitor")
-    res.render('employee/availablestock',{
+    res.render('pages/availablestock',{
         available_list:monitors
     })
 }
 
 var availableSystemUnit = (req, res) => {
     let system = final.filter(stock=>stock.name == "System Unit")
-    res.render('employee/availablestock',{
+    res.render('pages/availablestock',{
         available_list:system
     })
 }
 
 var availablekeyboardAndMouse = (req, res) => {
     let KandM = final.filter(stock=>stock.name == "Keyboard and Mouse")
-    res.render('employee/availablestock',{
+    res.render('pages/availablestock',{
         available_list:KandM
     })
 }
 
 var availablelaptop = (req, res) => {
     let laptop = final.filter(stock=>stock.name == "Laptop")
-    res.render('employee/availablestock',{
+    res.render('pages/availablestock',{
         available_list:laptop
     })
+}
+
+var graph = (req,res)=>{
+    Stock_out.aggregate
 }
 
 var viewAvailable = (req, res) => {
 
     let product = final.find(stock => stock._id == req.params.id)
     // console.log(products)
-    res.render('employee/editStock',{
+    res.render('pages/editStock',{
         product:product
     })
     // Product.findById(req.params._id, (err, product) => {

@@ -3,6 +3,7 @@ const employeeControllers = require('../controllers/employeeControllers');
 var router = express.Router();
 var userControllers = require('../controllers/employeeControllers');
 var productsControllers = require('../controllers/productControllers');
+const stockOutController = require('../controllers/stockOutController');
 const { stocklist } = require('../controllers/stockOutController');
 var stockOutControllers = require('../controllers/stockOutController')
 
@@ -81,8 +82,6 @@ router.get('/employee/product/AvailableStocks/:id/view',productsControllers.view
 
 router.post('/employee/product/add',productsControllers.add_now)
 
-router.get('/employee/product/salesReport',productsControllers.sales)
-
 router.get('/employee/product/stockManagement',productsControllers.stocks)
 
 router.get('/employee/product/supplier',productsControllers.supplier)
@@ -90,5 +89,10 @@ router.get('/employee/product/supplier',productsControllers.supplier)
 router.get('/employee/products',productsControllers.ourProducts)
 
 router.get('/employee/help',employeeControllers.help)
+
+router.get('/employee/product/sales_report',employeeControllers.salesReport)
+
+
+router.get('/getAllSales',stockOutController.get_all_sales)
 //Export router
 module.exports = router;
